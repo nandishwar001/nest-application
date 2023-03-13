@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  user:
+    build:
+      context: ./
+      dockerfile: ./services/user/Dockerfile
+    command: /bin/sh -c 'yarn && yarn run start:debug'
+    hostname: user
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=local
+    volumes:
+      - ./services/user:/home/node/services/user
